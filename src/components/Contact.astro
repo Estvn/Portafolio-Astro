@@ -12,9 +12,77 @@ const {bg_style} = Astro.props;
             </p>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <!-- Información de contacto -->
+        <div class="grid md:grid-cols-1 gap-12 max-w-6xl mx-auto">
+            
+
             <div class="space-y-8">
+    <div class="neomorphism dark:neomorphism-dark p-8 rounded-2xl">
+        <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">Información de Contacto</h3>
+        
+        <!-- Contenedor FLEX en fila para Email, Teléfono y Ubicación -->
+        <div class="flex flex-wrap gap-6 mb-8"> <!-- gap-6 para separación entre elementos -->
+            <!-- Email -->
+            <div class="flex items-center space-x-4 bg-white/50 dark:bg-gray-800/50 p-4 rounded-xl shadow-sm flex-1 min-w-[250px]">
+                <div class="bg-primary-500 text-white p-3 rounded-full">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Email</h4>
+                    <a 
+                        href="mailto:example@email.com"
+                        target="_blank"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+                    >
+                        example@email.com
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Teléfono -->
+            <div class="flex items-center space-x-4 bg-white/50 dark:bg-gray-800/50 p-4 rounded-xl shadow-sm flex-1 min-w-[250px]">
+                <div class="bg-primary-500 text-white p-3 rounded-full">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Teléfono</h4>
+                    <a 
+                        href="https://wa.me/1234567890" 
+                        target="_blank"
+                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+                    >
+                        +123 456 7890
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Ubicación -->
+            <div class="flex items-center space-x-4 bg-white/50 dark:bg-gray-800/50 p-4 rounded-xl shadow-sm flex-1 min-w-[250px]">
+                <div class="bg-primary-500 text-white p-3 rounded-full">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Ubicación</h4>
+                    <p class="text-gray-600 dark:text-gray-300">Tegucigalpa D.C., Honduras</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Redes sociales (se mantiene igual) -->
+        <div class="pt-8 border-t border-gray-200 dark:border-gray-600">
+            <h4 class="font-semibold mb-4">Puedes buscarme en:</h4>
+            <div class="flex space-x-4">
+                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 hover:scale-110 transform">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-300 hover:scale-110 transform">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- <div class="space-y-8">
                 <div class="neomorphism dark:neomorphism-dark p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">Información de Contacto</h3>
                     
@@ -65,7 +133,6 @@ const {bg_style} = Astro.props;
                         </div>
                     </div>
                     
-                    <!-- Redes sociales -->
                     <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-600">
                         <h4 class="font-semibold mb-4">Puedes buscarme en:</h4>
                         <div class="flex space-x-4">
@@ -75,14 +142,13 @@ const {bg_style} = Astro.props;
                             <a href={contactInformation.github} class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-300 hover:scale-110 transform">
                                 <i class="fab fa-github"></i>
                             </a>
-
                         </div>
                     </div>
                 </div>
             </div>
-            
+             -->
             <!-- Formulario de contacto -->
-            <div>
+            <!-- <div>
                 <div class="neomorphism dark:neomorphism-dark p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">Envíame un Mensaje</h3>
                     
@@ -123,6 +189,7 @@ const {bg_style} = Astro.props;
                     </form>
                 </div>
             </div>
+             -->
         </div>
     </div>
 </section>
