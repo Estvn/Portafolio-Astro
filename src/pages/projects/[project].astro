@@ -1,0 +1,21 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import type { IProject } from '../../interfaces/Interface';
+import type { MDXInstance } from 'astro';
+
+export async function getStaticPaths() {
+  const allProjects: MDXInstance<IProject>[] = await Astro.glob('./content/*.mdx') as MDXInstance<IProject>[];
+  return allProjects.map((project:MDXInstance<IProject>) => ({
+    params: { project: project.frontmatter.url },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content, frontmatter } = await project;
+---
+
+<ProjectLayout {...frontmatter}>
+  <Content />
+</ProjectLayout>
+

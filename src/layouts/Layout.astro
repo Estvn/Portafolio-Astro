@@ -1,0 +1,41 @@
+---
+import "../assets/css/global.css"
+import "../assets/css/styles.css"
+import Head from "../components/Head.astro"
+import Nav from "../components/Nav.astro"
+
+import Project from "../components/projects/Project.astro"
+import Stack from "../components/technologies/Stack.astro"
+import Experience from "../components/Experience.astro"
+import Contact from "../components/Contact.astro"
+import Footer from "../components/Footer.astro"
+
+const { component, page } = Astro.props;
+const componentMap = {Project,Stack,Experience,Contact};
+const Component = componentMap[component];
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <Head page={page}/>
+  <body class="min-h-screen flex dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <Nav page={page}/>
+      <main class="flex-1 ml-0 lg:ml-64 p-8 overflow-auto">
+      {Component ? <Component bg_style="900"/> : <slot/>}
+      <div class="block lg:hidden mt-4 p-2 w-full">
+        <Footer />
+      </div>
+
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+  </body>
+  
+</html>
+
+
+
+
+
+
+

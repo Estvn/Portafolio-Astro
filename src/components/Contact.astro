@@ -1,0 +1,128 @@
+---
+import { contactInformation } from "../content/contactInformation";
+const {bg_style} = Astro.props;
+---
+
+<section id="contacto" class={`section-spacing  dark:bg-gray-${bg_style ?? "800"} rounded-2xl mb-10`}>
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">Contacto</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <!-- Información de contacto -->
+            <div class="space-y-8">
+                <div class="neomorphism dark:neomorphism-dark p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">Información de Contacto</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary-500 text-white p-3 rounded-full">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a 
+                                    href={`mailto:${contactInformation.email}`}
+                                    target="_blank"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+                        00        >
+                                    {contactInformation.email}
+                                </a>
+                            </div>
+
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary-500 text-white p-3 rounded-full">
+                                <i class="fas fa-phone"></i>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold">Teléfono</h4>
+                                <a 
+                                    href={`https://wa.me/${contactInformation.phoneNumber.replace(/[^0-9]/g, '')}`} 
+                                    target="_blank"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
+                                >
+                                    {contactInformation.phoneNumber}
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary-500 text-white p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Ubicación</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Tegucigalpa D.C., Honduras</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Redes sociales -->
+                    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-600">
+                        <h4 class="font-semibold mb-4">Puedes buscarme en:</h4>
+                        <div class="flex space-x-4">
+                            <a href={contactInformation.linkedin} class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 hover:scale-110 transform">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href={contactInformation.github} class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-300 hover:scale-110 transform">
+                                <i class="fab fa-github"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulario de contacto -->
+            <div>
+                <div class="neomorphism dark:neomorphism-dark p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">Envíame un Mensaje</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-input relative">
+                                <input type="text" id="nombre" name="nombre" placeholder=" " required 
+                                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            
+                            <div class="form-input relative">
+                                <input type="email" id="email" name="email" placeholder=" " required 
+                                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-input relative">
+                            <input type="text" id="asunto" name="asunto" placeholder=" " required 
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300">
+                            <label for="asunto">Asunto</label>
+                        </div>
+                        
+                        <div class="form-input relative">
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder=" " required 
+                                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300 resize-none"></textarea>
+                            <label for="mensaje">Mensaje</label>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-primary-600 hover:to-primary-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Enviar Mensaje
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

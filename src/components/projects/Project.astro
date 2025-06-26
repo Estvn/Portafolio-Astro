@@ -1,0 +1,20 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { IProject } from '../../interfaces/Interface';
+
+const projects: IProject[] = (await Astro.glob('../../pages/projects/content/*.mdx')).map(project => project.frontmatter) as IProject[];
+---
+
+<section id="proyectos" class="section-spacing bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">Proyectos Destacados</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Una selección de mis trabajos más representativos y soluciones innovadoras
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            {projects.map((project) => (<ProjectCard {...project} />))}
+        </div>
+    </div>
+</section>

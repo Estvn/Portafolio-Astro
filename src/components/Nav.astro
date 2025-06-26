@@ -1,0 +1,34 @@
+---
+import Footer from './Footer.astro';
+
+const linkClasses = "px-4 py-2 rounded-lg font-semibold text-white " +
+  "bg-gradient-to-r from-primary-500 to-primary-600 " +
+  "hover:from-primary-600 hover:to-primary-700 hover:text-white " +
+  "transform hover:scale-105 hover:shadow-lg " +
+  "transition-all duration-300 hover:bg-gray-800";
+---
+
+<nav
+  class="fixed w-full lg:w-64
+         top-0 lg:inset-y-0 lg:left-0 
+         bg-white/90 dark:bg-gray-800/10 backdrop-blur-md 
+         shadow-xl z-20
+         flex flex-row lg:flex-col 
+         items-center lg:items-start
+         px-4 lg:px-6 py-2 lg:py-8
+         gap-x-4 lg:gap-y-8"
+>
+
+  <div class="flex flex-row lg:flex-col space-x-4 lg:space-x-0 lg:space-y-4 w-full lg:w-auto justify-center lg:justify-start">
+    <a href="/" class={linkClasses}>Sobre mí</a>
+    <a href="/experience" class={linkClasses}>Experiencia y Educación</a>
+    <a href="/projects" class={linkClasses}>Proyectos</a>
+    <a href="/technologies" class={linkClasses}>Tecnologías</a>
+    <a href="/contact" class={linkClasses}>Contacto</a>
+  </div>
+
+  <div class="hidden lg:block lg:self-end mt-auto p-2">
+    <Footer/>
+  </div>
+
+</nav>

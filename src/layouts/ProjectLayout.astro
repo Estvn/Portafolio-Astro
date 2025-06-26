@@ -1,0 +1,73 @@
+---
+import "../assets/css/global.css"
+import "../assets/css/styles.css"
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro"
+import Nav from "../components/Nav.astro"
+import type { IGithub} from "../interfaces/Interface";
+
+const { title, description, image, technologies, links } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+    <Head/>
+    <body class="min-h-screen flex dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+        <Nav/>
+            <main class="flex-1 ml-0 lg:ml-64 p-8 overflow-auto">
+                <article class="p-8 max-w-3xl mx-auto mt-7">
+                <h1 class="text-4xl font-bold mb-4 text-gradient">{title}</h1>
+                <div class="flex my-5">
+                    {links.live && (
+                        <a href={links.live} class=" p-2 rounded-full hover:bg-white/30 transition-colors duration-300" target="_blank">
+                            Visitar sitio <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    )}
+                    {links.github && links.github.length === 1 && (
+                    <a
+                        href={links.github[0].url}
+                        class="p-2 rounded-full hover:bg-white/30 transition-colors duration-300 inline-flex items-center gap-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {links.github[0].name} <i class="fab fa-github"></i>
+                    </a>
+                    )}
+
+                    {links.github && links.github.length > 1 && (
+                    <div class="flex flex-col gap-2">
+                        {links.github.map((repo:IGithub) => (
+                        <a
+                            href={repo.url}
+                            class="p-2 rounded-full hover:bg-white/30 transition-colors duration-300 inline-flex items-center gap-2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fab fa-github"></i> {repo.name}
+                        </a>
+                        ))}
+                    </div>
+                    )}
+                </div>
+                <div class="markdown-content">
+                    <slot />
+                </div>
+
+                <hr class="my-5">
+                <h3 class="text-2xl my-5 text-gradient">Tecnologías utilizadas:</h3>
+                <ul class="mt-4 list-disc list-inside">
+                    {technologies.map((tech:string[]) => (
+                    <li>{tech}</li>
+                    ))}
+                </ul>
+            </article>
+            <div class="block lg:hidden mt-4 p-2 w-full">
+                <Footer />
+            </div>
+        </main>
+        <script src="../assets/js/main.js"></script>
+    </body>
+</html>
+
+
+>
