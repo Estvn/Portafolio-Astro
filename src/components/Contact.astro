@@ -1,5 +1,5 @@
 ---
-import { contactInformation } from "../content/contactInformation";
+import { contactInformation } from "../content/contactInformation.ts";
 const {bg_style} = Astro.props;
 ---
 
@@ -29,11 +29,11 @@ const {bg_style} = Astro.props;
                 <div>
                     <h4 class="font-semibold">Email</h4>
                     <a 
-                        href="mailto:example@email.com"
+                        href={`mailto:${contactInformation.email}`}
                         target="_blank"
                         class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
                     >
-                        example@email.com
+                        {contactInformation.email}
                     </a>
                 </div>
             </div>
@@ -46,11 +46,11 @@ const {bg_style} = Astro.props;
                 <div>
                     <h4 class="font-semibold">Teléfono</h4>
                     <a 
-                        href="https://wa.me/1234567890" 
+                        href={`https://wa.me/${contactInformation.phoneNumber}`} 
                         target="_blank"
                         class="text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
                     >
-                        +123 456 7890
+                        {contactInformation.phoneNumber}
                     </a>
                 </div>
             </div>
@@ -71,10 +71,10 @@ const {bg_style} = Astro.props;
         <div class="pt-8 border-t border-gray-200 dark:border-gray-600">
             <h4 class="font-semibold mb-4">Puedes buscarme en:</h4>
             <div class="flex space-x-4">
-                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 hover:scale-110 transform">
+                <a href={contactInformation.linkedin} class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 hover:scale-110 transform">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-300 hover:scale-110 transform">
+                <a href={contactInformation.github} class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-300 hover:scale-110 transform">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
