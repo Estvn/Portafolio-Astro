@@ -43,7 +43,7 @@ links:
 - BLOB Storage - Almacenamiento de multimedsia
 - Azure Cache for Redis - Almacenamiento de datos volátiles
 
-- Azure SQL Database - DW/OLAP
+- Azure SQL Database - Datawarehouse
 - Azure Data Factory - Orquestador del ETL
 
 # Diseño de la Solución 
@@ -58,15 +58,15 @@ links:
 - **Webserver para API.** Maneja el acceso a los almacenamientos de datos del negocio. Una API compartida por ambas UI, ya que la UI del negocio no exige un costo computacional tan grande como para realizar una API única.
 - **Queue Storage y Azure functions.** Manejar tareas en segundo plano y que no requieren respuesta inmediata, para evitar una alta carga de trabajo en el servidor que aloja la API.
 - **Azure Cache for Redis.** Para alojar data frecuentemente visitada, carrito de compras, sesión del cliente, para lograr una UX fluida.
-- **Azure Data Factory y DB SQL OLAP**. Un orquestador para manejar el proceso ETL entre la DB OLTP del negocio y la DB OLAP que guardará los datos listos para realizar análisis estratégico.
+- **Azure Data Factory y DW**. Un orquestador para manejar el proceso ETL entre la DB OLTP del negocio y el Datawarehouse que guardará los datos listos para realizar análisis estratégico.
 
 ### Justificación más detallada del uso de los servicios (opcional)
 
 - Cada tipo de usuario (clientes, editores) podrá acceder desde una **UI** en un servidor dedicado (**FrontOffice y BackOffice**).
-- Las **UI** toman información de la **base de datos SQL y la BLOB** por medio de una única **API** (se ha decidido dejar una sola API, porque la gestión del negocio requiere de un costo computacional mucho menor que el realizado por los clientes).
+- Las **UI** toman información de la **base de datos SQL** por medio de una única **API** (se ha decidido dejar una sola API, porque la gestión del negocio requiere de un costo computacional mucho menor que el realizado por los clientes).
 - La UI de cliente prioriza la eficiencia y experiencia de usuario fluida, entonces la UI de cliente podrá enviar mensajes en **Queue storage** para pedidos, transacciones, etc., que luego serán ejecutadas en segundo plano por un **Serverless**.
 - UI de cliente usará el **almacenamiento en caché (Azure Cache for Redis)** para alojar información como el carrito de compras, datos de sesión e información frecuentemente visitada, asegurando una **experiencia de usuario sin retardos**.
-- Para el análisis de negocio se usa el **orquestador Data Factory**, para hacer el **proceso ETL** entre la **base de datos OLTP y la base de datos OLAP**, para que luego la información del Datawarehouse pueda ser solicitada por la API o una herramienta externa (Power BI), y que la gestión del negocio pueda **realizar el análisis estratégico**.
+- Para el análisis de negocio se usa el **orquestador Data Factory**, para hacer el **proceso ETL** entre la **base de datos OLTP y el Datawarehouse**, para que luego la información del Datawarehouse pueda ser solicitada por la API o una herramienta externa (Power BI), y que la gestión del negocio pueda **realizar el análisis estratégico**.
 
 
 # Evidencias de Despliegue
@@ -113,7 +113,7 @@ Creación de Azure Redis for Cache:
 
 ![Redis 2](/assets/img/projects/infra-ecommerce/20250620223447.png)
 
-Creación de DB OLAP (Datawarehouse)
+Creación de DB para Datawarehouse
 
 ![OLAP 1](/assets/img/projects/infra-ecommerce/20250620230219.png)
 
@@ -135,7 +135,7 @@ Se ha decidido separar los recursos en módulos del negocio, en tres repositorio
 - Módulo de almacenamiento
 - Módulo de analítica
 
-Al descubrir que se puede optar por compartir recursos (e.g. servicio de base de datos puede ser compartido por la base de datos OLAP y OLTP, servicio de cuentas de almacenamiento puede ser compartido por Queue Storage y Azure Functions), la separación de los repositorios depende de más comunicación sobre los servicios que se crean.
+Al descubrir que se puede optar por compartir recursos (e.g. servicio de base de datos puede ser compartido por la base de datos DW y OLTP, servicio de cuentas de almacenamiento puede ser compartido por Queue Storage y Azure Functions), la separación de los repositorios depende de más comunicación sobre los servicios que se crean.
 
 ## Repositorio Infraestructura de Aplicaciones
 
@@ -159,7 +159,7 @@ Todo lo que tiene que ver con datos en tiempo real y caché.
 
 Para Datawarehouse y orquestación ETL.
 
-- Azure SQL Database - DW/OLAP
+- Azure SQL Database - DW
 - Azure Elastic Jobs - Orquestador del ETL
 
 # Reflexiones Finales
@@ -179,7 +179,6 @@ Para Datawarehouse y orquestación ETL.
 
 ## Uso de un Datawarehouse y herramienta de orquestación ETL
 
-- Una base de datos OLTP donde se guarda toda la información transaccional del negocio, un servicio llamado Azure Data Factory (orquestador) y una base de datos OLAP que sirve para guardar la información procesada e importante para la toma de decisiones, son las herramientas involucradas para el trabajo realizado por el Datawarehouse. 
-- Los procedimientos almacenados que forman parte del ETL están alojados en la base de datos OLAP, el orquestador simplemente se encarga del flujo de trabajo realizado por el ETL.
-- El uso de estos elementos para el desarrollo de un DW es una opción excelente y más económica que otras opciones (desarrollo de IA para análisis de negocio), además, se puede identificar con precisión las estadísticas del negocio por medio de la data procesada.
-
+- Una base de datos OLTP donde se guarda toda la información transaccional del negocio, un servicio llamado Azure Data Factory (orquestador) y el Datawarehouse para guardar la información procesada para análisis del negocio, son las herramientas involucradas para la toma de decisiones a partir de los datos.
+- Los procedimientos almacenados que forman parte del ETL están alojados en el Datawarehouse, el orquestador simplemente se encarga del flujo de trabajo realizado por el ETL.
+- El uso de estos elementos para el desarrollo de un DW es una opción excelente y más económica que otras opciones (desarrollo de IA para análisis de negocio o Azure Synapse Analytics), además, se puede identificar con precisión las estadísticas del negocio por medio de la data procesada.
