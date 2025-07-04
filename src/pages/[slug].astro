@@ -17,7 +17,7 @@ interface Props{
 const { page } = Astro.props as Props;
 ---
 
-<Layout component={page.component} page={page} />
+<Layout component={page.component} title={page.title} />
 
 
 

@@ -4,7 +4,6 @@ export interface IPage {
     slug: string,
     title: string,
     component: string,
-    content: string,
 }
 
 export interface IProject {
