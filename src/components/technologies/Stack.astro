@@ -14,13 +14,10 @@ const {bg_style} = Astro.props;
                 ¡Stack tecnológico y herramientas que domino para ofrecerle soluciones innovadoras!
             </p>
         </div>
-
         {
             technologies.map((tech: ITypeTechnology) => (
                 <TypeTechnology typeTech={tech.type} techList={tech.listTechnologies} />
             ))
         }
-
-    </div>
     </div>
 </section>

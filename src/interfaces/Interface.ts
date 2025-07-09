@@ -15,7 +15,8 @@ export interface IProject {
 
 export interface ITechnology {
     name: string,
-    icon: string
+    icon: string,
+    percentage: number
 }
 
 export interface ITypeTechnology {
