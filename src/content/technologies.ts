@@ -19,11 +19,11 @@ export const technologies: ITypeTechnology[] = [
         listTechnologies: [
             { name: "Laravel",        icon: "/assets/icons/laravel.svg", percentage: 65 },
             { name: "Spring Boot",    icon: "/assets/icons/springboot.svg", percentage: 50 },
+            { name: "FastAPI",        icon: "/assets/icons/fastapi.svg", percentage: 50 },
             { name: "PHP",            icon: "/assets/icons/php.svg", percentage: 85 },
             { name: "Java",           icon: "/assets/icons/java.svg", percentage: 84 },
             { name: "Python",         icon: "/assets/icons/python.svg", percentage: 45 },
             { name: "Node.js",        icon: "/assets/icons/nodejs.svg", percentage: 30 },
-            { name: "Microservicios", icon: "/assets/icons/microstrategy.svg",percentage: 80 },
         ]
     },
     {
@@ -31,6 +31,7 @@ export const technologies: ITypeTechnology[] = [
         listTechnologies: [
             { name: "Oracle PL/SQL",                   icon: "/assets/icons/oracle.svg", percentage: 85 },
             { name: "SQL Server Transact-SQL",         icon: "/assets/icons/microsoftsqlserver.svg", percentage: 50 },
+            { name: "Redis",                           icon: "/assets/icons/redis.svg", percentage: 50 },
             { name: "MySQL",                           icon: "/assets/icons/mysql.svg", percentage: 75 },
             { name: "DB2",                             icon: "/assets/icons/db2.svg", percentage: 30 },
         ]
@@ -38,13 +39,14 @@ export const technologies: ITypeTechnology[] = [
     {
         type: "Bussiness Intelligence",
         listTechnologies: [
-            { name: "Data Warehouse",                  icon: "/assets/icons/datawarehouse.svg", percentage: 75 },
+            { name: "Data Warehouse",                  icon: "/assets/icons/data-warehouse.png", percentage: 75 },
             { name: "Tableau",                         icon: "/assets/icons/tableau.svg", percentage: 50 }
         ]
     },
     {
         type: "Infraestructura",
         listTechnologies: [
+            { name: "Microservicios", icon: "/assets/icons/microservicio.png",percentage: 50 },
             { name: "Terraform",      icon: "/assets/icons/terraform.svg", percentage: 50 },
             { name: "Azure Cloud",    icon: "/assets/icons/azure.svg", percentage: 35 },
             { name: "Docker",         icon: "/assets/icons/docker.svg", percentage: 55 }

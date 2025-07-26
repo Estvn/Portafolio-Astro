@@ -8,9 +8,7 @@ const { name, icon } = Astro.props as { name: string; icon: string };
     alt={`${name} logo`}
     class="w-18 h-18 object-contain transition-transform duration-200 group-hover:scale-110"
   />
-  <span
-    class="mt-2 font-semibold text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-  >
+  <span class="mt-2 font-semibold text-center text-white">
     {name}
   </span>
 </div>
