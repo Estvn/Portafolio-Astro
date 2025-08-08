@@ -1,3 +1,4 @@
+/*
 import fs from 'fs/promises';  // Usamos fs.promises para async/await
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -32,3 +33,4 @@ async function renameFiles() {
 
 // Ejecutar
 renameFiles();
+*/
