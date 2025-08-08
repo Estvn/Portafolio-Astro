@@ -19,7 +19,8 @@ export const technologies: ITypeTechnology[] = [
         listTechnologies: [
             { name: "Laravel",        icon: "/assets/icons/laravel.svg", percentage: 65 },
             { name: "Spring Boot",    icon: "/assets/icons/springboot.svg", percentage: 50 },
-            { name: "FastAPI",        icon: "/assets/icons/fastapi.svg", percentage: 50 },
+            { name: "FastAPI",        icon: "/assets/icons/fastapi.svg", percentage: 70 },
+            { name: "Serverless",     icon: "/assets/icons/serverless.svg", percentage: 50 },
             { name: "PHP",            icon: "/assets/icons/php.svg", percentage: 85 },
             { name: "Java",           icon: "/assets/icons/java.svg", percentage: 84 },
             { name: "Python",         icon: "/assets/icons/python.svg", percentage: 45 },
